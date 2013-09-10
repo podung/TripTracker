@@ -45,9 +45,9 @@
 	
 	function dropDestinations() {
 		for (var i=0; i < destinations.length; i++) {
-	    setTimeout(function() {
+	    // setTimeout(function() {
 		    addMarker(destinations[i]);
-		  }, i * 200);
+		  // }, i * 200);
 		}
 	}
 	
