@@ -22,16 +22,33 @@
 	  ['Rome', 41.892055,12.483162]
 	];
 	
+	var map;
+	
 	function initialize() {
 	  var mapOptions = {
 	    center: new google.maps.LatLng(46.027482,10.389633),
 	    zoom: 5,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  };
+		
+	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		dropDestinations();
+  }
 	
-	  var map = new google.maps.Map(document.getElementById("map-canvas"),
-	      mapOptions);
+	function addMarker(destination) {
+		var marker = new google.maps.Marker({
+		      position: new google.maps.LatLng(destination[1],destination[2]),
+		      map: map,
+		      title:destination[0]
+		  })
+	}
 	
+	function dropDestinations() {
+		for (var i=0; i < destinations.length; i++) {
+	    setTimeout(function() {
+		    addMarker(destinations[i]);
+		  }, i * 200);
+		}
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
