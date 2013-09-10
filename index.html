@@ -3,21 +3,8 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="index.css">
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1vS57CqJhzrJ5uoJLDH3vQ93C_PegQdY&sensor=false">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(46.027482,10.389633),
-          zoom: 5,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1vS57CqJhzrJ5uoJLDH3vQ93C_PegQdY&sensor=false"></script>
+	<script type="text/javascript" src="index.js"></script>
   </head>
   <body>
     <div id="map-canvas"/>
