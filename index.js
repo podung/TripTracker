@@ -1,5 +1,13 @@
 (function () {
 	
+//	Destination
+//		Lat/Long
+//		Pics --> full size, thumbnail, description
+//		Title
+//		PathToNextDestination 
+//			TravelType
+//			LatLong array
+	
 	var destinations = [
 	  ['Dusseldorf', 51.227098,6.774337],
 	  ['Cologne', 50.936796,6.960998],
