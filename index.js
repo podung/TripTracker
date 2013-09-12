@@ -107,7 +107,7 @@
 				    path: destination.pathTo,
 				    strokeColor: "#FF0000",
 				    strokeOpacity: 1.0,
-				    strokeWeight: 2
+				    strokeWeight: 3
 		  	});
 		
 				pathTo.setMap(map);
@@ -120,6 +120,7 @@
 		  })
 		
 		marker.setMap(map);
+		google.maps.event.addListener(marker, 'click', openSlideshow);
 	}
 	
 	function dropDestinations() {
@@ -130,6 +131,28 @@
 			  }, i * 2000);
 			})(i);
 		}
+	}
+	
+	function openSlideshow() {
+		$.magnificPopup.open({
+		    items: [
+		      {
+		        src: 'pics/1.jpg',
+				title: 'This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.'
+		      },
+		      {
+		        src: 'pics/2.jpg',
+		      },
+			  {
+		        src: 'pics/3.jpg',
+		      },
+		    ],
+		    gallery: {
+		      enabled: true
+		    },
+		    type: 'image', // this is default type
+			closeOnBgClick: false
+		});
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);

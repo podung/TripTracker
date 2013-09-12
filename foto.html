@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- 1. Link to jQuery (1.8 or later), -->
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> <!-- 32 KB -->
+
+	<!-- fotorama.css & fotorama.js. -->
+	<link  href="http://fotorama.s3.amazonaws.com/4.3.4.1/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+	<script src="http://fotorama.s3.amazonaws.com/4.3.4.1/fotorama.js"></script> <!-- 13 KB -->
+  </head>
+  <body>
+	<button id="testButton" type="button">Click Me!</button>
+    <div id="slideshow" class="fotorama" 
+			data-width="50%"
+	     	data-ratio="400/300">
+	  <img src="pics/1.jpg">
+	  <img src="pics/2.jpg">
+	  <img src="pics/3.jpg">
+	</div>
+  
+	<script>
+		$('#testButton').click(function(){
+			$('#slideshow').html('
+				<img src="pics/4.jpg">
+				<img src="pics/5.jpg">
+				<img src="pics/6.jpg">
+			');
+		});
+	</script>
+  </body>
+	
+</html>

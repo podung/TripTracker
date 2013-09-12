@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<!-- Magnific Popup core CSS file -->
+		<link rel="stylesheet" href="magnific-popup/magnific-popup.css"> 
+
+		<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+		<script src="js/jquery-1.9.1.min.js"></script> 
+
+		<!-- Magnific Popup core JS file -->
+		<script src="magnific-popup/jquery.magnific-popup.js"></script>
+  </head>
+  <body>
+	<button id="testButton" type="button">Click Me!</button>
+	<button id="testButton2" type="button">Click Me!</button>
+	
+	<div class="popup-gallery">
+
+	</div>  
+
+
+	<script type="text/javascript">
+		var slideshow;
+		
+			$('#testButton').magnificPopup({
+			    items: [
+			      {
+			        src: 'pics/1.jpg',
+					title: 'This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.  But I do want to see what would happen if we display a really long caption and place this on the site.  Like if we are explaining a picture, you know? This is just a test.'
+			      },
+			      {
+			        src: 'pics/2.jpg',
+			      },
+				  {
+			        src: 'pics/3.jpg',
+			      },
+			    ],
+			    gallery: {
+			      enabled: true
+			    },
+			    type: 'image', // this is default type
+				closeOnBgClick: false
+			});		
+	
+				$('#testButton2').magnificPopup({
+				    items: [
+				      {
+				        src: 'pics/4.jpg',
+						title: 'Woohoo - other set of pics'
+				      },
+				      {
+				        src: 'pics/5.jpg',
+				      },
+					  {
+				        src: 'pics/6.jpg',
+				      },
+				    ],
+				    gallery: {
+				      enabled: true
+				    },
+				    type: 'image', // this is default type
+					closeOnBgClick: false
+				});
+	
+		//$(document).ready(function() {
+		//	slideshow = $('.popup-gallery').magnificPopup({
+		//		delegate: 'a',
+		//		type: 'image',
+		//		tLoading: 'Loading image #%curr%...',
+		//		mainClass: 'mfp-img-mobile',
+		//		gallery: {
+		//			enabled: true,
+		//			navigateByImgClick: true,
+		//			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		//		},
+		//		image: {
+		//			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+		//			titleSrc: function(item) {
+		//				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+		//			}
+		//		}
+		//	}).;
+		//	});
+	
+	
+	</script>
+	
+	
+	
+  </body>
+	
+</html>
+
+
+
+
