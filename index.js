@@ -10,42 +10,88 @@
 	
 	
 	var destinations = [
-	  createDestination('Dusseldorf', 51.227098,6.774337, [new google.maps.LatLng(51.227098,6.774337), new new google.maps.LatLng(50.936796,6.960998)],
-	  createDestination('Cologne', 50.936796,6.960998, [new google.maps.LatLng(50.936796,6.960998), new google.maps.LatLng(50.056478,7.769684)],
-	  createDestination('Bacharach', 50.056478,7.769684, [new google.maps.LatLng(50.056478,7.769684), new google.maps.LatLng(50.277054,7.644371)
-		createDestination('Braubach', 50.277054,7.644371, [new google.maps.LatLng(50.277054,7.644371), new google.maps.LatLng(49.379411,10.185911)],
-	  createDestination('Rothenburg (ob der Tauber)', 49.379411,10.185911, [new google.maps.LatLng(49.379411,10.185911), new google.maps.LatLng(50.98437,11.030563)],
-	  createDestination('Erfurt', 50.98437,11.030563, [new google.maps.LatLng(50.98437,11.030563), new google.maps.LatLng(51.873735,12.628071),
-	  createDestination('Wittenberg', 51.873735,12.628071, [new google.maps.LatLng(51.873735,12.628071), new google.maps.LatLng(52.517892,13.408599)],
-	  createDestination('Berlin', 52.517892,13.408599, [new google.maps.LatLng(52.517892,13.408599), new google.maps.LatLng(48.136308,11.578109)],
-	  createDestination('Munich', 48.136308,11.578109, [new google.maps.LatLng(48.136308,11.578109), new google.maps.LatLng(47.572009,10.691572)],
-	  createDestination('Füssen', 47.572009,10.691572, [new google.maps.LatLng(47.572009,10.691572), new google.maps.LatLng(48.136308,11.578109)],
-	  createDestination('Munich', 48.136308,11.578109, [new google.maps.LatLng(48.136308,11.578109), new google.maps.LatLng(45.437671,12.326818)],
-	  createDestination('Venice', 45.437671,12.326818, [new google.maps.LatLng(45.437671,12.326818), new google.maps.LatLng(44.145369,9.653183)],
-	  createDestination('Cinque Terre (Monterosso al Mare)', 44.145369,9.653183, [new google.maps.LatLng(44.145369,9.653183), new google.maps.LatLng(44.134913,9.685003)],
-		createDestination('Cinque Terre (Vernazza)', 44.134913,9.685003, [new google.maps.LatLng(44.134913,9.685003), new google.maps.LatLng(44.145369,9.653183)],
-		createDestination('Cinque Terre (Monterosso al Mare)', 44.145369,9.653183, [new google.maps.LatLng(44.145369,9.653183), new google.maps.LatLng(43.722234,10.401939)],
-	  createDestination('Pisa', 43.722234,10.401939, [new google.maps.LatLng(43.722234,10.401939), new google.maps.LatLng(43.318184,11.330971)],
-	  createDestination('Siena', 43.318184,11.330971, [new google.maps.LatLng(43.318184,11.330971), new google.maps.LatLng(43.770908,11.248184)],
-	  createDestination('Florence', 43.770908,11.248184, [new google.maps.LatLng(43.770908,11.248184), new google.maps.LatLng(41.892055,12.483162)],
-	  createDestination('Rome', 41.892055,12.483162, []]
+		createDestination('Dusseldorf', 51.227098,6.774337, []),
+		createDestination('Cologne', 50.936796,6.960998, [new google.maps.LatLng(51.227098,6.774337), new google.maps.LatLng(50.936796,6.960998)]),
+		createDestination('Bacharach', 50.056478,7.769684, [new google.maps.LatLng(50.936796,6.960998), new google.maps.LatLng(50.056478,7.769684)]),
+		createDestination('Braubach', 50.277054,7.644371, [new google.maps.LatLng(50.057139,7.773170),
+				new google.maps.LatLng(50.066726,7.773514),
+				new google.maps.LatLng(50.074163,7.772570),
+				new google.maps.LatLng(50.076422,7.772484),
+				new google.maps.LatLng(50.079286,7.770338),
+				new google.maps.LatLng(50.084766,7.763557),
+				new google.maps.LatLng(50.087878,7.758322),
+				new google.maps.LatLng(50.102964,7.738495),
+				new google.maps.LatLng(50.108910,7.729225),
+				new google.maps.LatLng(50.114414,7.721672),
+				new google.maps.LatLng(50.124980,7.733345),
+				new google.maps.LatLng(50.128282,7.737808),
+				new google.maps.LatLng(50.132244,7.738495),
+				new google.maps.LatLng(50.135104,7.736263),
+				new google.maps.LatLng(50.136975,7.733688),
+				new google.maps.LatLng(50.137635,7.728710),
+				new google.maps.LatLng(50.139395,7.725620),
+				new google.maps.LatLng(50.142366,7.725105),
+				new google.maps.LatLng(50.146106,7.726135),
+				new google.maps.LatLng(50.147976,7.725277),
+				new google.maps.LatLng(50.150616,7.720299),
+				new google.maps.LatLng(50.153036,7.713947),
+				new google.maps.LatLng(50.156116,7.708454),
+				new google.maps.LatLng(50.163374,7.702961),
+				new google.maps.LatLng(50.166783,7.698841),
+				new google.maps.LatLng(50.170192,7.683907),
+				new google.maps.LatLng(50.170302,7.678585),
+				new google.maps.LatLng(50.170961,7.671890),
+				new google.maps.LatLng(50.173270,7.661934),
+				new google.maps.LatLng(50.174809,7.654724),
+				new google.maps.LatLng(50.177228,7.649059),
+				new google.maps.LatLng(50.180196,7.644768),
+				new google.maps.LatLng(50.184153,7.644424),
+				new google.maps.LatLng(50.188110,7.646313),
+				new google.maps.LatLng(50.193276,7.646656),
+				new google.maps.LatLng(50.200858,7.643566),
+				new google.maps.LatLng(50.204484,7.640820),
+				new google.maps.LatLng(50.209428,7.633095),
+				new google.maps.LatLng(50.214261,7.623482),
+				new google.maps.LatLng(50.220962,7.619019),
+				new google.maps.LatLng(50.227222,7.614555),
+				new google.maps.LatLng(50.231065,7.606144),
+				new google.maps.LatLng(50.234250,7.593784),
+				new google.maps.LatLng(50.234799,7.585030),
+				new google.maps.LatLng(50.236775,7.580395),
+				new google.maps.LatLng(50.240398,7.578850),
+				new google.maps.LatLng(50.243582,7.579880),
+				new google.maps.LatLng(50.245888,7.583485),
+				new google.maps.LatLng(50.247754,7.586575),
+				new google.maps.LatLng(50.248851,7.594643),
+				new google.maps.LatLng(50.249071,7.599449),
+				new google.maps.LatLng(50.247864,7.615070),
+				new google.maps.LatLng(50.245888,7.625027),
+				new google.maps.LatLng(50.247205,7.642193),
+				new google.maps.LatLng(50.251047,7.649231),
+				new google.maps.LatLng(50.255986,7.651634),
+				new google.maps.LatLng(50.261034,7.651978),
+				new google.maps.LatLng(50.266521,7.647858),
+				new google.maps.LatLng(50.270252,7.642708),
+				new google.maps.LatLng(50.272446,7.639446),
+				new google.maps.LatLng(50.273653,7.637215),
+				new google.maps.LatLng(50.274860,7.637901)])
 	];
 	
 	var map;
 	
-	function createDestination(title, lat, lng, pathToNextDestination) {
+	function createDestination(title, lat, lng, pathTo) {
 		return {
 			title: title,
 			lat: lat,
 			lng: lng,
-			pathToNextDestination: pathToNextDestination
-		}
+			pathTo: pathTo
+		};
 	}
 	
 	function initialize() {
 	  var mapOptions = {
-	    center: new google.maps.LatLng(46.027482,10.389633),
-	    zoom: 5,
+	    center: new google.maps.LatLng(50.939393,6.963744), // (46.027482,10.389633), // This is a good center for the map...
+	    zoom: 8,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP
 	  };
 		
@@ -54,18 +100,35 @@
   }
 	
 	function addMarker(destination) {
+		
+		if (typeof destination.pathTo !== 'undefined' && destination.pathTo.length > 0)
+		{
+				var pathTo = new google.maps.Polyline({
+				    path: destination.pathTo,
+				    strokeColor: "#FF0000",
+				    strokeOpacity: 1.0,
+				    strokeWeight: 2
+		  	});
+		
+				pathTo.setMap(map);
+		}
+	
 		var marker = new google.maps.Marker({
-		      position: new google.maps.LatLng(destination[1],destination[2]),
-		      map: map,
-		      title:destination[0]
+		      position: new google.maps.LatLng(destination.lat,destination.lng),
+		      
+		      title:destination.title
 		  })
+		
+		marker.setMap(map);
 	}
 	
 	function dropDestinations() {
 		for (var i=0; i < destinations.length; i++) {
-	    // setTimeout(function() {
-		    addMarker(destinations[i]);
-		  // }, i * 200);
+			(function(index){
+				setTimeout(function() {
+			    addMarker(destinations[index]);
+			  }, i * 2000);
+			})(i);
 		}
 	}
 	
