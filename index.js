@@ -99,7 +99,8 @@
 		
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	  //destinations.push(createDestination('Dusseldorf', 51.227098,6.774337, google.maps.geometry.encoding.decodePath(toCologneEncoded)));
-		dropDestinations();
+		//dropDestinations();
+		addMarker(destinations[0]);
   }
 	
 	function addMarker(destination) {
@@ -130,9 +131,9 @@
 					  (function(index){
 					  	setTimeout(function() {
 					      drawNextPoint(pathToDisplay, points[index]);
-					    }, i * 50);
+					    }, i * 25);
 					  })(i);
-						timeToWait += 50;
+						timeToWait += 25;
 				}
 		}
 
@@ -189,6 +190,20 @@
 	}
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	var currentIndex = 0;
+	
+	$(function() {
+		
+			$("#nextButton").click(function(){
+				if (currentIndex < destinations.length - 1)
+				{
+					currentIndex += 1;
+					addMarker(destinations[currentIndex]);
+				}
+			});
+	});
+	
 }());
 
 
