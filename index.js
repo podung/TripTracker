@@ -122,6 +122,9 @@
 				    strokeWeight: 3
 		  	});
 		
+				
+
+				map.panTo(destination.pathTo[0]);
 				pathToDisplay.setMap(map);
 				
 				var points = pathToFull.GetPointsAtDistance(200);
@@ -131,9 +134,9 @@
 					  (function(index){
 					  	setTimeout(function() {
 					      drawNextPoint(pathToDisplay, points[index]);
-					    }, i * 25);
+					    }, i * 35);
 					  })(i);
-						timeToWait += 25;
+						timeToWait += 35;
 				}
 		}
 
@@ -152,7 +155,9 @@
 	
 	function drawNextPoint(poly, point)
 	{
-		 poly.getPath().push(point);
+		 
+			poly.getPath().push(point);
+		  map.panTo(point);
 	}
 	
 	function dropDestinations() {
