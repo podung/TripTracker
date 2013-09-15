@@ -8,6 +8,7 @@
 //			TravelType
 //			LatLong array
 	
+	//var toCologneEncoded = "i`twH{kjh@roAwX`uAwXz|@mE~lAip@`j@eP`j@_NxwAal@fcDk_AzqGmdEd|Eq|H|vE}pCbrFw_Ct|EqnB";
 	
 	var destinations = [
 		createDestination('Dusseldorf', 51.227098,6.774337, []),
@@ -77,6 +78,7 @@
 				new google.maps.LatLng(50.274860,7.637901)])
 	];
 	
+	var markers = [];	
 	var map;
 	
 	function createDestination(title, lat, lng, pathTo) {
@@ -96,40 +98,71 @@
 	  };
 		
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	  //destinations.push(createDestination('Dusseldorf', 51.227098,6.774337, google.maps.geometry.encoding.decodePath(toCologneEncoded)));
 		dropDestinations();
   }
 	
 	function addMarker(destination) {
-		
+		var timeToWait = 1;
 		if (typeof destination.pathTo !== 'undefined' && destination.pathTo.length > 0)
 		{
-				var pathTo = new google.maps.Polyline({
+			
+				var pathToDisplay = new google.maps.Polyline({
+				    path: [destination.pathTo[0]],
+				    strokeColor: "#FF0000",
+				    strokeOpacity: 1.0,
+				    strokeWeight: 3
+		  	});
+		
+				var pathToFull = new google.maps.Polyline({
 				    path: destination.pathTo,
 				    strokeColor: "#FF0000",
 				    strokeOpacity: 1.0,
 				    strokeWeight: 3
 		  	});
 		
-				pathTo.setMap(map);
+				pathToDisplay.setMap(map);
+				
+				var points = pathToFull.GetPointsAtDistance(200);
+				
+				for (i = 0; i < points.length; i++)
+				{
+					  (function(index){
+					  	setTimeout(function() {
+					      drawNextPoint(pathToDisplay, points[index]);
+					    }, i * 50);
+					  })(i);
+						timeToWait += 50;
+				}
 		}
-	
+
 		var marker = new google.maps.Marker({
 		      position: new google.maps.LatLng(destination.lat,destination.lng),
 		      
 		      title:destination.title
 		  })
 		
-		marker.setMap(map);
+		setTimeout(function() {
+			marker.setMap(map);
+		}, timeToWait);
+		
 		google.maps.event.addListener(marker, 'click', openSlideshow);
 	}
 	
+	function drawNextPoint(poly, point)
+	{
+		 poly.getPath().push(point);
+	}
+	
 	function dropDestinations() {
+
 		for (var i=0; i < destinations.length; i++) {
-			(function(index){
-				setTimeout(function() {
-			    addMarker(destinations[index]);
-			  }, i * 2000);
-			})(i);
+			
+		  (function(index){
+		  	setTimeout(function() {
+		      addMarker(destinations[index]);
+		    }, i * 200);
+		  })(i);
 		}
 	}
 	
