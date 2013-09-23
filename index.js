@@ -78,7 +78,7 @@
 				new google.maps.LatLng(50.274860,7.637901)])
 	];
 	
-	var markers = [];	
+	var markers = [];
 	var map;
 	
 	function createDestination(title, lat, lng, pathTo) {
@@ -86,7 +86,9 @@
 			title: title,
 			lat: lat,
 			lng: lng,
-			pathTo: pathTo
+			pathTo: pathTo,
+			marker: null,
+			pathToDisplayPoly: null
 		};
 	}
 	
@@ -123,7 +125,8 @@
 		  	});
 		
 				
-
+				
+				
 				map.panTo(destination.pathTo[0]);
 				pathToDisplay.setMap(map);
 				
@@ -151,6 +154,9 @@
 		}, timeToWait);
 		
 		google.maps.event.addListener(marker, 'click', openSlideshow);
+		
+		destination.pathToDisplayPoly = pathToDisplay;
+		destination.marker = marker;
 	}
 	
 	function drawNextPoint(poly, point)
@@ -207,6 +213,17 @@
 					addMarker(destinations[currentIndex]);
 				}
 			});
+			
+			$("#backButton").click(function(){
+				if (currentIndex > 0)
+				{
+					destinations[currentIndex].marker.setMap(null);
+					destinations[currentIndex].pathToDisplayPoly.setMap(null);
+					
+					currentIndex -= 1;
+					map.panTo(destinations[currentIndex].marker.getPosition())
+				}
+			})
 			
 			$(window).resize(function () {
 			    var h = $(window).height(),
