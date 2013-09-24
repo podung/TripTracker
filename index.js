@@ -227,7 +227,7 @@
 			
 			$(window).resize(function () {
 			    var h = $(window).height(),
-			        offsetTop = 50; // Calculate the top offset
+			        offsetTop = 104; // Calculate the top offset
 
 			    $('#map-canvas').css('height', (h - offsetTop));
 			}).resize();
