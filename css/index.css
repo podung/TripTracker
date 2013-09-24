@@ -1,4 +1,12 @@
 html { height: 100% } 
 body { height: 100%; margin: 0; padding: 0 }
 #map-canvas { box-sizing: border-box; display:block; top: 50px; }
-#destination-panel { box-sizing: border-box; display:block; top: 50px; }
+#destination-panel { 
+	box-sizing: border-box; 
+	display:block; 
+	top: 70px; 
+	position:absolute; 
+	z-index:1000; 
+	right:20px; 
+	width: 300px;
+}
