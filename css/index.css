@@ -10,9 +10,6 @@ body { height: 100%; margin: 0; padding: 0 }
 	right:0px; 
 	width: 300px;
 }
-#destinations-nav {
-	height:20px;
-}
 .navbar {
 	margin-bottom: 0px !important;
 }
