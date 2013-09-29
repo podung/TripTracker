@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var destinations = require('./scripts/destinations');
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
@@ -12,7 +14,14 @@ app.configure('development', function(){
 });
 
 app.get('/test', function (req, res) {
-	res.render('index', {title: "test"});
+	res.render('index', {
+			title: "test",
+			destinations: destinations.allDestinations()
+	});
+});
+
+app.get('/json', function (req, res) {
+	res.json(destinations.allDestinations())
 });
 
 app.listen(3000);
