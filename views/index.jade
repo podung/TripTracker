@@ -16,5 +16,32 @@ block navbars
 						a(href='javascript:void(0)') About
 					li.active
 						a(href='javascript:void(0)') Contact
+	div.navbar.navbar-default#destinations-nav
+		div.navbar-header
+			a.navbar-brand(href='javascript:void(0)') Germany & Italy 2013
+		ul.nav.navbar-nav
+			li
+				a#backButton(href='javascript:void(0)')
+					i.icon-chevron-left
+			li
+				a#nextButton(href='javascript:void(0)')
+						i.icon-chevron-right
+			li
+				a(href='javascript:void(0)')
+					i.icon-circle
+			li.active
+				a(href='javascript:void(0)')
+					i.icon-circle
+			li
+				a(href='javascript:void(0)')
+					i.icon-circle
+			li
+				a(href='javascript:void(0)')
+					i.icon-circle
 block content
-	div me
+	div#destination-panel.panel.panel-primary
+		div.panel-heading
+			h3.panel-title Day 1 (pt 1): Arrive in Dusseldorf
+		div.panel-body
+			p We arrived in Dusseldorf at 9:00am in the morning, 2 hours later than planned due to a "paper work" delay in Chicago.  Had a few difficulties finding the train station, but once we did we were on our way to our first planned stop... a quick tour of Cologne!
+	div#map-canvas
