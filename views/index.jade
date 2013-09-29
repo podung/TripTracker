@@ -7,7 +7,7 @@ block navbars
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-					a.navbar-brand(href='javascript:void(0)') Trip Tracker
+				a.navbar-brand(href='javascript:void(0)') Trip Tracker
 			div.collapse.navbar-collapse
 				ul.nav.navbar-nav
 					li.active
@@ -26,18 +26,10 @@ block navbars
 			li
 				a#nextButton(href='javascript:void(0)')
 						i.icon-chevron-right
-			li
-				a(href='javascript:void(0)')
-					i.icon-circle
-			li.active
-				a(href='javascript:void(0)')
-					i.icon-circle
-			li
-				a(href='javascript:void(0)')
-					i.icon-circle
-			li
-				a(href='javascript:void(0)')
-					i.icon-circle
+			each item in destinations
+				li
+					a(href='javacript:void(0)' title=item.title)
+						i.icon-circle
 block content
 	div#destination-panel.panel.panel-primary
 		div.panel-heading
