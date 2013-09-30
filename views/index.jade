@@ -37,3 +37,6 @@ block content
 		div.panel-body
 			p We arrived in Dusseldorf at 9:00am in the morning, 2 hours later than planned due to a "paper work" delay in Chicago.  Had a few difficulties finding the train station, but once we did we were on our way to our first planned stop... a quick tour of Cologne!
 	div#map-canvas
+	script(type='text/javascript').
+		var TripTracker = TripTracker || {};
+		TripTracker.Destinations = !{JSON.stringify(destinations)};
