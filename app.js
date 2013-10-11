@@ -13,15 +13,11 @@ app.configure('development', function(){
   app.locals.pretty = true;
 });
 
-app.get('/test', function (req, res) {
+app.get('/', function (req, res) {
 	res.render('index', {
 			title: "test",
 			destinations: destinations.allDestinations()
 	});
-});
-
-app.get('/json', function (req, res) {
-	res.json(destinations.allDestinations())
 });
 
 app.listen(3000);
