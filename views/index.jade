@@ -26,9 +26,9 @@ block navbars
 			li
 				a#nextButton(href='javascript:void(0)')
 						i.icon-chevron-right
-			each item in destinations
-				li
-					a(href='javacript:void(0)' title=item.title)
+			each destination, i in destinations
+				li(class="#{i===0 ? 'active destination-link': 'destination-link'}")
+					a(href='javacript:void(0)' title=destination.title + i)
 						i.icon-circle
 block content
 	div#destination-panel.panel.panel-primary
