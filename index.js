@@ -30,10 +30,7 @@ $(function () {
 	  };
 		
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	  //destinations.push(createDestination('Dusseldorf', 51.227098,6.774337, google.maps.geometry.encoding.decodePath(toCologneEncoded)));
-		//dropDestinations();
-		console.log(TripTracker.Destinations.length)
-		addMarker(TripTracker.Destinations[0]);
+	  addMarker(TripTracker.Destinations[0]);
   }
 	
 	function addMarker(destination) {
