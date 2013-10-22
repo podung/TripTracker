@@ -5,6 +5,9 @@ $(function () {
 	var markers = [];
 	var map;
 	var destinationLinks = $('#destinations-nav .destination-link');
+	var destinationPanel = $('#destination-panel');
+	var summaryTitle = destinationPanel.find('.panel-title');
+	var summaryDescription = destinationPanel.find('.panel-body');
 	
 	function createDestination(title, lat, lng, pathTo) {
 		return {
@@ -110,6 +113,10 @@ $(function () {
 		destinationLinks.eq(currentIndex).addClass('active');		
 	}
 	
+	function setSummary(){
+		summaryTitle.html(TripTracker.Destinations[currentIndex].title);
+	}
+	
 	function openSlideshow() {
 		$.magnificPopup.open({
 		    items: [
@@ -143,6 +150,7 @@ $(function () {
 				{
 					currentIndex += 1;
 					setActiveDestinationLink();
+					setSummary();
 					addMarker(TripTracker.Destinations[currentIndex]);
 				}
 			});
@@ -155,6 +163,7 @@ $(function () {
 					
 					currentIndex -= 1;
 					setActiveDestinationLink();
+					setSummary();
 					map.panTo(TripTracker.Destinations[currentIndex].marker.getPosition())
 				}
 			})
