@@ -96,18 +96,6 @@ $(function () {
 		}
 	}
 	
-	function dropDestinations() {
-
-		for (var i=0; i < destinations.length; i++) {
-			
-		  (function(index){
-		  	setTimeout(function() {
-		      addMarker(TripTracker.Destinations[index]);
-		    }, i * 200);
-		  })(i);
-		}
-	}
-	
 	function setActiveDestinationLink() {
 		destinationLinks.removeClass('active');
 		destinationLinks.eq(currentIndex).addClass('active');		
