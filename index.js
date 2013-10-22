@@ -9,6 +9,8 @@ $(function () {
 	var summaryTitle = destinationPanel.find('.panel-title');
 	var summaryDescription = destinationPanel.find('.panel-body');
 	
+	var waypoints = [];
+	
 	function createDestination(title, lat, lng, pathTo) {
 		return {
 			title: title,
@@ -55,22 +57,14 @@ $(function () {
 		  	});
 		
 				
-				
-				
 				map.panTo(decodedPath[0]);
 				pathToDisplay.setMap(map);
 				
 				var points = pathToFull.GetPointsAtDistance(200);
+				waypoints.length = 0;
+				waypoints = waypoints.concat(points);
 				
-				for (i = 0; i < points.length; i++)
-				{
-					  (function(index){
-					  	setTimeout(function() {
-					      drawNextPoint(pathToDisplay, points[index]);
-					    }, i * 35);
-					  })(i);
-						timeToWait += 35;
-				}
+				drawNextPoint(pathToDisplay);
 		}
 
 		var marker = new google.maps.Marker({
@@ -81,7 +75,7 @@ $(function () {
 		
 		setTimeout(function() {
 			marker.setMap(map);
-		}, timeToWait);
+		}, 35 * waypoints.length);
 		
 		google.maps.event.addListener(marker, 'click', openSlideshow);
 		
@@ -89,11 +83,20 @@ $(function () {
 		destination.marker = marker;
 	}
 	
-	function drawNextPoint(poly, point)
+	function drawNextPoint(poly)
 	{
-		 
-			poly.getPath().push(point);
-		  map.panTo(point);
+		if (waypoints.length > 0)
+		{
+			var nextPoint = waypoints.shift();
+		
+				setTimeout(function() {
+					poly.getPath().push(nextPoint);
+		  			map.panTo(nextPoint);
+		  			
+		  			drawNextPoint(poly);
+				}, 35);
+
+		}
 	}
 	
 	function dropDestinations() {
