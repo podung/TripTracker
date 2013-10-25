@@ -28,7 +28,8 @@ $(function () {
 	  };
 		
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	  TripTracker.DestinationManager = new window.TripTracker.DestinationManager(TripTracker.Destinations, map);
+	  TripTracker.DestinationManager = new window.TripTracker.DestinationManager(TripTracker.Destinations, map, openSlideshow);
+	  TripTracker.DestinationManager.goTo(0);
 	  // addMarker(TripTracker.Destinations[0]);
   }
 
@@ -74,23 +75,18 @@ $(function () {
 					currentIndex += 1;
 					setActiveDestinationLink();
 					setSummary();
-					TripTracker.DestinationManager.goTo(currentIndex);
-					//addMarker(TripTracker.Destinations[currentIndex]);
+					TripTracker.DestinationManager.next();
 				}
 			});
 			
 			$("#backButton").click(function(){
 				if (currentIndex > 0)
-				{
-					TripTracker.Destinations[currentIndex].marker.setMap(null);
-					TripTracker.Destinations[currentIndex].pathToDisplayPoly.setMap(null);
-					
+				{	
 					currentIndex -= 1;
 					setActiveDestinationLink();
 					setSummary();
 					
-					waypoints.length = 0;
-					map.panTo(TripTracker.Destinations[currentIndex].marker.getPosition())
+					TripTracker.DestinationManager.previous();
 				}
 			})
 			

@@ -1,6 +1,6 @@
 (function(){
 	
-	var DestinationManager = function(destinations, map) {
+	var DestinationManager = function(destinations, map, openSlideshow) {
 		var currentIndex = 0;
 		var waypoints = [];
 		
@@ -10,6 +10,26 @@
 			currentIndex = index;
 			
 			addMarker(destinations[index]);
+		}
+		
+		this.next = function () {
+			if (currentIndex < TripTracker.Destinations.length - 1) 
+			{
+				currentIndex += 1;
+				addMarker(destinations[currentIndex]);
+			}
+		}
+		
+		this.previous = function () {
+			if (currentIndex > 0)
+			{	
+				destinations[currentIndex].marker.setMap(null);
+				destinations[currentIndex].pathToDisplayPoly.setMap(null);
+			
+				currentIndex -= 1;
+				waypoints.length = 0;
+				map.panTo(TripTracker.Destinations[currentIndex].marker.getPosition())
+			}
 		}
 		
 		function addMarker(destination) {
