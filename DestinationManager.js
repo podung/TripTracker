@@ -7,8 +7,8 @@
 		var destinations = destinations;
 		
 		this.goTo = function (index) {
+			// ToDo: goTo doesn't work correctly yet...
 			currentIndex = index;
-			
 			addMarker(destinations[index]);
 		}
 		

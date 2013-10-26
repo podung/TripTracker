@@ -30,7 +30,6 @@ $(function () {
 	  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	  TripTracker.DestinationManager = new window.TripTracker.DestinationManager(TripTracker.Destinations, map, openSlideshow);
 	  TripTracker.DestinationManager.goTo(0);
-	  // addMarker(TripTracker.Destinations[0]);
   }
 
 	function setActiveDestinationLink() {
