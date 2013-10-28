@@ -63,10 +63,6 @@
 				  title:destination.title
 			})
 		
-			setTimeout(function() {
-				marker.setMap(map);
-			}, 35 * waypoints.length);
-		
 			google.maps.event.addListener(marker, 'click', openSlideshow);
 		
 			destination.pathToDisplayPoly = pathToDisplay;
@@ -86,6 +82,10 @@
 						drawNextPoint(poly);
 					}, 35);
 
+			}
+			else
+			{
+				destination.marker.setMap(map)
 			}
 		}
 	}
