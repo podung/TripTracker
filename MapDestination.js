@@ -3,6 +3,12 @@
 		var waypoints = [];
 		var destination = destination;
 		
+		var marker = new google.maps.Marker({
+			  position: new google.maps.LatLng(destination.lat,destination.lng),
+			  title:destination.title
+		});
+		google.maps.event.addListener(marker, 'click', openSlideshow);
+		
 		this.start = function() {
 			addMarker();
 		}
@@ -11,7 +17,7 @@
 			// ToDo: Can this cause a race condition with drawNextPoint??
 			waypoints.length = 0;
 						
-			destination.marker.setMap(null);
+			marker.setMap(null);
 			destination.pathToDisplayPoly.setMap(null);
 		}
 		
@@ -56,17 +62,8 @@
 				
 					drawNextPoint(pathToDisplay);
 			}
-
-			var marker = new google.maps.Marker({
-				  position: new google.maps.LatLng(destination.lat,destination.lng),
-			  
-				  title:destination.title
-			})
-		
-			google.maps.event.addListener(marker, 'click', openSlideshow);
 		
 			destination.pathToDisplayPoly = pathToDisplay;
-			destination.marker = marker;
 		}
 	
 		function drawNextPoint(poly)
@@ -81,11 +78,10 @@
 					
 						drawNextPoint(poly);
 					}, 35);
-
 			}
 			else
 			{
-				destination.marker.setMap(map)
+				marker.setMap(map)
 			}
 		}
 	}
