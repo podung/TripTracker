@@ -10,7 +10,7 @@
 		google.maps.event.addListener(marker, 'click', openSlideshow);
 		
 		this.start = function() {
-			addMarker();
+			startDrawing();
 		}
 		
 		this.hide = function() {
@@ -35,7 +35,7 @@
 			}
 		}
 		
-		function addMarker() {
+		function startDrawing() {
 			var timeToWait = 1;
 			if (typeof destination.pathTo !== 'undefined' && destination.pathTo.length > 0)
 			{
@@ -59,11 +59,11 @@
 					var points = pathToFull.GetPointsAtDistance(200);
 					waypoints.length = 0;
 					waypoints = waypoints.concat(points);
-				
-					drawNextPoint(pathToDisplay);
+								
 			}
 		
-			destination.pathToDisplayPoly = pathToDisplay;
+			destination.pathToDisplayPoly = pathToDisplay;			
+			drawNextPoint(pathToDisplay);
 		}
 	
 		function drawNextPoint(poly)
