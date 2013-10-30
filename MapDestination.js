@@ -1,17 +1,27 @@
 (function(){
 	var MapDestination = function (destination, map, openSlideshow) {
-		var waypoints = [];
 		var destination = destination;
+		var displayPoints;
+		var stopDrawing = false;
 		
 		var marker = new google.maps.Marker({
 			  position: new google.maps.LatLng(destination.lat,destination.lng),
 			  title:destination.title
 		});
-		
-		var pathToFull = new google.maps.Polyline({
-			path: google.maps.geometry.encoding.decodePath(destination.pathTo)
-		});
-					
+				
+		// todo: is this case valid?
+		if (typeof destination.pathTo !== 'undefined' && destination.pathTo.length > 0)
+		{	
+			var definedPath = new google.maps.Polyline({
+				path: google.maps.geometry.encoding.decodePath(destination.pathTo)
+			});
+			displayPoints = definedPath.GetPointsAtDistance(200);
+		}
+		else
+		{
+			displayPoints = [marker.position];
+		}
+			
 		var pathToDisplay = new google.maps.Polyline({
 			strokeColor: "#FF0000",
 			strokeOpacity: 1.0,
@@ -21,13 +31,14 @@
 		google.maps.event.addListener(marker, 'click', openSlideshow);
 		
 		this.start = function() {
+			stopDrawing = false;
 			startDrawing();
 		}
 		
 		this.hide = function() {
 			// ToDo: Can this cause a race condition with drawNextPoint??
-			waypoints.length = 0;
-						
+
+			stopDrawing = true;
 			marker.setMap(null);
 			pathToDisplay.setMap(null);
 		}
@@ -35,15 +46,8 @@
 		this.finish = function() {
 			// ToDo: Can this cause a race condition with drawNextPoint??
 			
-			var remainingPoints = waypoints.slice();
-			waypoints.length = 0;
-			
-			var polyPath = pathToDisplay.getPath();
-			
-			while (remainingPoints.length > 0)
-			{
-				polyPath.push(remainingPoints.shift());
-			}
+			stopDrawing = true;
+			pathToDisplay.setPath(displayPoints);
 		}
 		
 		this.getMarkerPosition = function() {
@@ -51,33 +55,30 @@
 		};
 		
 		function startDrawing() {
-			// todo: is this case valid?
-			if (typeof pathToFull !== 'undefined' && pathToFull.getPath().length > 0)
-			{	
-				var points = pathToFull.GetPointsAtDistance(200);
-				
-				map.panTo(points[0]);
-				pathToDisplay.setPath([points[0]]);
-				pathToDisplay.setMap(map);
-				
-				waypoints.length = 0;
-				waypoints = waypoints.concat(points);
-			}
-				
-			drawNextPoint(pathToDisplay);
+			map.panTo(displayPoints[0]);
+			pathToDisplay.setPath([displayPoints[0]]);
+			pathToDisplay.setMap(map);
+			
+			drawNextPoint(0);
 		}
 	
-		function drawNextPoint(poly)
+		function drawNextPoint(nextIndex)
 		{
-			if (waypoints.length > 0)
+			if (stopDrawing)
 			{
-				var nextPoint = waypoints.shift();
+				stopDrawing = false;
+				return;
+			}
+		
+			if (nextIndex < displayPoints.length)
+			{
+				var nextPoint = displayPoints[nextIndex];
 		
 					setTimeout(function() {
-						poly.getPath().push(nextPoint);
+						pathToDisplay.getPath().push(nextPoint);
 						map.panTo(nextPoint);
 					
-						drawNextPoint(poly);
+						drawNextPoint(nextIndex + 1);
 					}, 35);
 			}
 			else
