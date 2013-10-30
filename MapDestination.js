@@ -48,6 +48,7 @@
 			
 			stopDrawing = true;
 			pathToDisplay.setPath(displayPoints);
+			marker.setMap(map);
 		}
 		
 		this.getMarkerPosition = function() {
