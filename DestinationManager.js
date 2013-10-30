@@ -33,7 +33,7 @@
 				destinations[currentIndex].hide();
 				
 				currentIndex -= 1;
-				map.panTo(TripTracker.Destinations[currentIndex].marker.getPosition())
+				map.panTo(destinations[currentIndex].getMarkerPosition())
 			}
 		}
 	}

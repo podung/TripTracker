@@ -7,7 +7,19 @@
 			  position: new google.maps.LatLng(destination.lat,destination.lng),
 			  title:destination.title
 		});
+		
+		var pathToFull = new google.maps.Polyline({
+			path: google.maps.geometry.encoding.decodePath(destination.pathTo)
+		});
+					
+		var pathToDisplay = new google.maps.Polyline({
+			strokeColor: "#FF0000",
+			strokeOpacity: 1.0,
+			strokeWeight: 3
+		});
+		
 		google.maps.event.addListener(marker, 'click', openSlideshow);
+		
 		
 		this.start = function() {
 			startDrawing();
@@ -18,7 +30,7 @@
 			waypoints.length = 0;
 						
 			marker.setMap(null);
-			destination.pathToDisplayPoly.setMap(null);
+			pathToDisplay.setMap(null);
 		}
 		
 		this.finish = function() {
@@ -27,7 +39,7 @@
 			var remainingPoints = waypoints.slice();
 			waypoints.length = 0;
 			
-			var polyPath = destination.pathToDisplayPoly.getPath();
+			var polyPath = pathToDisplay.getPath();
 			
 			while (remainingPoints.length > 0)
 			{
@@ -35,34 +47,24 @@
 			}
 		}
 		
+		this.getMarkerPosition = function() {
+			return marker.getPosition();
+		};
+		
 		function startDrawing() {
 			var timeToWait = 1;
-			if (typeof destination.pathTo !== 'undefined' && destination.pathTo.length > 0)
-			{
-					var decodedPath = google.maps.geometry.encoding.decodePath(destination.pathTo);
-			
-					var pathToDisplay = new google.maps.Polyline({
-						path: [decodedPath[0]],
-						strokeColor: "#FF0000",
-						strokeOpacity: 1.0,
-						strokeWeight: 3
-					});
-		
-					var pathToFull = new google.maps.Polyline({
-						path: decodedPath
-					});
-		
+			if (typeof pathToFull !== 'undefined' && pathToFull.getPath().length > 0)
+			{	
+				var points = pathToFull.GetPointsAtDistance(200);
 				
-					map.panTo(decodedPath[0]);
-					pathToDisplay.setMap(map);
+				map.panTo(points[0]);
+				pathToDisplay.setPath([points[0]]);
+				pathToDisplay.setMap(map);
 				
-					var points = pathToFull.GetPointsAtDistance(200);
-					waypoints.length = 0;
-					waypoints = waypoints.concat(points);
-								
+				waypoints.length = 0;
+				waypoints = waypoints.concat(points);
 			}
-		
-			destination.pathToDisplayPoly = pathToDisplay;			
+				
 			drawNextPoint(pathToDisplay);
 		}
 	
@@ -85,5 +87,7 @@
 			}
 		}
 	}
+	
+	
 	window.TripTracker.MapDestination = MapDestination;
 })()
