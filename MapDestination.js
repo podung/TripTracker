@@ -20,7 +20,6 @@
 		
 		google.maps.event.addListener(marker, 'click', openSlideshow);
 		
-		
 		this.start = function() {
 			startDrawing();
 		}
@@ -52,7 +51,6 @@
 		};
 		
 		function startDrawing() {
-			var timeToWait = 1;
 			// todo: is this case valid?
 			if (typeof pathToFull !== 'undefined' && pathToFull.getPath().length > 0)
 			{	
@@ -88,7 +86,6 @@
 			}
 		}
 	}
-	
 	
 	window.TripTracker.MapDestination = MapDestination;
 })()
