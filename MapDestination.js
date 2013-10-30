@@ -53,6 +53,7 @@
 		
 		function startDrawing() {
 			var timeToWait = 1;
+			// todo: is this case valid?
 			if (typeof pathToFull !== 'undefined' && pathToFull.getPath().length > 0)
 			{	
 				var points = pathToFull.GetPointsAtDistance(200);
